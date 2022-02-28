@@ -12,7 +12,8 @@ void send_file(FILE *fp, int sockfd){
   char data[SIZE] = {0};
  
   while(fgets(data, SIZE, fp) != NULL) {
-    if (send(sockfd, data, sizeof(data), 0) == -1) {
+    if (send(sockfd, data, sizeof(data), 0) == -1) 
+    {
       perror("[-]Error in sending file.");
       exit(1);
     }
@@ -23,7 +24,12 @@ void send_file(FILE *fp, int sockfd){
  void write_file(int sockfd){
   int n;
   FILE *fp;
-  char *filename = "recv.txt";
+  // char *filename = "recv.txt";
+
+char receiver[500];
+   printf("enter the file name along with extension to be received");
+ scanf("%s",receiver);
+  char *filename = receiver;
   char buffer[SIZE];
  
   fp = fopen(filename, "w");
@@ -52,7 +58,9 @@ int main()
 
     char *filename = "send.txt";
     
-    
+    //    printf("enter the file name along with extension to be sent");
+//  scanf("%s",sendere);
+//   char *filename = sender;
     
     
     
@@ -62,37 +70,20 @@ int main()
     exit(1);
     }
     printf("[+]Server socket created successfully.\n");
-  
 
-     server_addr.sin_family = AF_INET;
-     server_addr.sin_port = port;
-     server_addr.sin_addr.s_addr = inet_addr(ip);
-     printf("inside main\n");
-  
-  e = bind(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
-  if(e < 0) {
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = port;
+    server_addr.sin_addr.s_addr = inet_addr(ip);
+    
+    e = bind(sockfd, (struct sockaddr*)&server_addr, sizeof(server_addr));
+    if(e < 0) {
     perror("[-]Error in bind");
     exit(1);
   }
   printf("[+]Binding successfull.\n");
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-char input;
-printf("pleaser input server as s or client as c\n");
-scanf("%c",&input);
+  char input;
+  printf("pleaser input server as s or client as c\n");
+  scanf("%c",&input);
 
 
 
@@ -101,7 +92,8 @@ if(input=='s')
      
   if(listen(sockfd, 10) == 0){
  printf("[+]Listening....\n");
- }else{
+ }else
+ {
  perror("[-]Error in listening");
     exit(1);
  }
