@@ -56,7 +56,12 @@ int main()
 
 if(input=='s')
 {
-    char *ip = "192.168.60.79";
+
+    // char *ip = "192.168.60.79";
+    char rip[200];
+    printf("enter  ip address of the server which is reciving {your system}");
+    scanf("%s",rip);
+     char *ip = rip;
      int port = 8080;
      int e;
      int sockfd, new_sock;
@@ -107,7 +112,12 @@ else if(input=='c')
 {
  
  
-  char *ip = "192.168.60.39";
+//   char *ip = "192.168.60.41";
+char sip[200];
+  printf("Enter ip address of the client which is sending file system {other system }");
+ scanf("%s",sip);
+ char *ip = sip;
+
   int port = 8080;
   int e;
  
