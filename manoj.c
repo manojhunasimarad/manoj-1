@@ -66,12 +66,6 @@ if(input=='s')
 
      char buffer[SIZE];
 
-    // char *filename = "send.txt";
-    char receiver[500];
-       printf("enter the file name along with extension to be received");
- scanf("%s",receiver);
-  char *filename = receiver;
-    
     
     
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
